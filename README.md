@@ -2,16 +2,11 @@
 
 Projeto da disciplina Pensamento Computacional e Automação com Python.
 
-## Objetivo
+# Objetivo
 
 O programa simula o monitoramento de uma missão espacial experimental. Ele analisa ciclos da missão, gera alertas, calcula o risco de cada ciclo, identifica tendência, mostra a área mais afetada e exibe um relatório final no terminal.
 
-## Arquivos
-
-- `mission_control.py`: código principal do projeto.
-- `README.md`: explicação do projeto e das regras usadas.
-
-## Dados usados
+# Dados usados
 
 O programa usa uma matriz chamada `dados_missao`.
 
@@ -33,40 +28,40 @@ Suporte de oxigênio
 Estabilidade operacional
 ```
 
-## Regras de classificação
+# - Regras de classificação
 
-### Temperatura
+# Temperatura
 
 - Menor que 18 °C: ATENÇÃO
 - De 18 °C até 30 °C: NORMAL
 - Maior que 30 °C até 35 °C: ATENÇÃO
 - Maior que 35 °C: CRÍTICO
 
-### Comunicação
+# Comunicação
 
 - Menor que 30%: CRÍTICO
 - De 30% até 59%: ATENÇÃO
 - 60% ou mais: NORMAL
 
-### Bateria
+# Bateria
 
 - Menor que 20%: CRÍTICO
 - De 20% até 49%: ATENÇÃO
 - 50% ou mais: NORMAL
 
-### Oxigênio
+# Oxigênio
 
 - Menor que 80%: CRÍTICO
 - De 80% até 89%: ATENÇÃO
 - 90% ou mais: NORMAL
 
-### Estabilidade
+# Estabilidade
 
 - Menor que 40%: CRÍTICO
 - De 40% até 69%: ATENÇÃO
 - 70% ou mais: NORMAL
 
-## Pontuação de risco
+# Pontuação de risco
 
 - NORMAL: 0 ponto
 - ATENÇÃO: 1 ponto
@@ -74,15 +69,13 @@ Estabilidade operacional
 
 Cada ciclo possui 5 informações monitoradas. Por isso, a pontuação máxima de um ciclo é 10 pontos.
 
-## Classificação do ciclo
+# Classificação do ciclo
 
 - 0 a 2 pontos: MISSÃO ESTÁVEL
 - 3 a 5 pontos: MISSÃO EM ATENÇÃO
 - 6 a 10 pontos: MISSÃO CRÍTICA
 
 ## Funções criadas
-
-O código possui mais de 5 funções, como exigido:
 
 - `analisar_temperatura()`
 - `analisar_comunicacao()`
@@ -95,7 +88,7 @@ O código possui mais de 5 funções, como exigido:
 - `identificar_area_mais_afetada()`
 - `mostrar_linha()`
 
-## Como executar
+# Como executar
 
 No terminal, dentro da pasta do projeto, execute:
 
@@ -103,7 +96,7 @@ No terminal, dentro da pasta do projeto, execute:
 python mission_control.py
 ```
 
-## Informações do projeto
+# Informações do projeto
 
 Nome da missão: Aurora-1
 
