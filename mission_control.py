@@ -1,6 +1,7 @@
 nome_missao = "Aurora-1"
 nome_equipe = "Equipe Horizonte"
 
+
 dados_missao = [
     [22, 94, 91, 98, 93],
     [29, 82, 75, 94, 87],
@@ -12,99 +13,90 @@ dados_missao = [
 
 areas_monitoradas = [
     "Temperatura interna",
-    "Comunicacao com a base",
+    "Comunicação com a base",
     "Sistema de energia",
-    "Suporte de oxigenio",
+    "Suporte de oxigênio",
     "Estabilidade operacional"
 ]
 
-
 def analisar_temperatura(temperatura):
     if temperatura < 18:
-        return ["ATENCAO", 1, "Temperatura abaixo do ideal"]
+        return ["ATENÇÃO", 1, "Temperatura abaixo do ideal"]
     elif temperatura <= 30:
-        return ["NORMAL", 0, "Temperatura estavel"]
+        return ["NORMAL", 0, "Temperatura estável"]
     elif temperatura <= 35:
-        return ["ATENCAO", 1, "Temperatura elevada"]
+        return ["ATENÇÃO", 1, "Temperatura elevada"]
     else:
-        return ["CRITICO", 2, "Risco de superaquecimento"]
-
+        return ["CRÍTICO", 2, "Risco de superaquecimento"]
 
 def analisar_comunicacao(comunicacao):
     if comunicacao < 30:
-        return ["CRITICO", 2, "Comunicacao com a base em nivel critico"]
+        return ["CRÍTICO", 2, "Comunicação com a base em nível crítico"]
     elif comunicacao < 60:
-        return ["ATENCAO", 1, "Comunicacao instavel"]
+        return ["ATENÇÃO", 1, "Comunicação instável"]
     else:
-        return ["NORMAL", 0, "Comunicacao estavel"]
-
+        return ["NORMAL", 0, "Comunicação estável"]
 
 def analisar_bateria(bateria):
     if bateria < 20:
-        return ["CRITICO", 2, "Bateria em nivel critico"]
+        return ["CRÍTICO", 2, "Bateria em nível crítico"]
     elif bateria < 50:
-        return ["ATENCAO", 1, "Bateria abaixo do recomendado"]
+        return ["ATENÇÃO", 1, "Bateria abaixo do recomendado"]
     else:
-        return ["NORMAL", 0, "Energia estavel"]
-
+        return ["NORMAL", 0, "Energia estável"]
 
 def analisar_oxigenio(oxigenio):
     if oxigenio < 80:
-        return ["CRITICO", 2, "Oxigenio em nivel critico"]
+        return ["CRÍTICO", 2, "Oxigênio em nível crítico"]
     elif oxigenio < 90:
-        return ["ATENCAO", 1, "Oxigenio abaixo do ideal"]
+        return ["ATENÇÃO", 1, "Oxigênio abaixo do ideal"]
     else:
-        return ["NORMAL", 0, "Oxigenio adequado"]
-
+        return ["NORMAL", 0, "Oxigênio adequado"]
 
 def analisar_estabilidade(estabilidade):
     if estabilidade < 40:
-        return ["CRITICO", 2, "Estabilidade operacional critica"]
+        return ["CRÍTICO", 2, "Estabilidade operacional crítica"]
     elif estabilidade < 70:
-        return ["ATENCAO", 1, "Estabilidade operacional reduzida"]
+        return ["ATENÇÃO", 1, "Estabilidade operacional reduzida"]
     else:
         return ["NORMAL", 0, "Estabilidade operacional adequada"]
 
-
 def classificar_ciclo(pontuacao):
     if pontuacao <= 2:
-        return "MISSAO ESTAVEL"
+        return "MISSÃO ESTÁVEL"
     elif pontuacao <= 5:
-        return "MISSAO EM ATENCAO"
+        return "MISSÃO EM ATENÇÃO"
     else:
-        return "MISSAO CRITICA"
-
+        return "MISSÃO CRÍTICA"
 
 def gerar_recomendacao(resultados, pontuacao):
     if pontuacao == 0:
-        return "Manter operacao normal e continuar monitoramento."
+        return "Manter operação normal e continuar monitoramento."
     elif pontuacao >= 8:
-        return "Ativar modo de seguranca e priorizar energia, oxigenio e comunicacao."
-    elif resultados[0][0] == "CRITICO":
-        return "Verificar controle termico da missao."
-    elif resultados[1][0] == "CRITICO":
+        return "Ativar modo de segurança e priorizar energia, oxigênio e comunicação."
+    elif resultados[0][0] == "CRÍTICO":
+        return "Verificar controle térmico da missão."
+    elif resultados[1][0] == "CRÍTICO":
         return "Tentar restabelecer contato com a base."
-    elif resultados[2][0] == "CRITICO":
+    elif resultados[2][0] == "CRÍTICO":
         return "Ativar modo de economia de energia."
-    elif resultados[3][0] == "CRITICO":
-        return "Acionar protocolo de suporte a vida."
-    elif resultados[4][0] == "CRITICO":
-        return "Reduzir operacoes nao essenciais."
+    elif resultados[3][0] == "CRÍTICO":
+        return "Acionar protocolo de suporte à vida."
+    elif resultados[4][0] == "CRÍTICO":
+        return "Reduzir operações não essenciais."
     else:
-        return "Monitorar sistemas em atencao e preparar plano de contingencia."
-
+        return "Monitorar sistemas em atenção e preparar plano de contingência."
 
 def analisar_tendencia(riscos):
     primeiro = riscos[0]
     ultimo = riscos[len(riscos) - 1]
 
     if ultimo > primeiro:
-        return "A missao apresentou tendencia de piora."
+        return "A missão apresentou tendência de piora."
     elif ultimo < primeiro:
-        return "A missao apresentou tendencia de melhora."
+        return "A missão apresentou tendência de melhora."
     else:
-        return "A missao permaneceu estavel em relacao ao inicio."
-
+        return "A missão permaneceu estável em relação ao início."
 
 def identificar_area_mais_afetada(pontuacao_areas, areas):
     maior_pontuacao = pontuacao_areas[0]
@@ -117,7 +109,6 @@ def identificar_area_mais_afetada(pontuacao_areas, areas):
 
     return areas[posicao_maior]
 
-
 def mostrar_linha(nome, valor, unidade, resultado):
     print(nome + ": " + str(valor) + unidade + " | " + resultado[0] + " | " + resultado[2])
 
@@ -125,7 +116,7 @@ def mostrar_linha(nome, valor, unidade, resultado):
 print("=" * 60)
 print("MISSION CONTROL AI")
 print("=" * 60)
-print("Missao: " + nome_missao)
+print("Missão: " + nome_missao)
 print("Equipe: " + nome_equipe)
 print("Quantidade de ciclos analisados: " + str(len(dados_missao)))
 print("=" * 60)
@@ -182,21 +173,21 @@ for i in range(len(dados_missao)):
         maior_risco = risco_ciclo
         ciclo_mais_critico = i + 1
 
-    if classificar_ciclo(risco_ciclo) == "MISSAO CRITICA":
+    if classificar_ciclo(risco_ciclo) == "MISSÃO CRÍTICA":
         quantidade_ciclos_criticos = quantidade_ciclos_criticos + 1
 
     print()
     print("CICLO " + str(i + 1))
     print("-" * 60)
-    mostrar_linha("Temperatura", temperatura, " C", resultado_temperatura)
-    mostrar_linha("Comunicacao", comunicacao, "%", resultado_comunicacao)
+    mostrar_linha("Temperatura", temperatura, " °C", resultado_temperatura)
+    mostrar_linha("Comunicação", comunicacao, "%", resultado_comunicacao)
     mostrar_linha("Bateria", bateria, "%", resultado_bateria)
-    mostrar_linha("Oxigenio", oxigenio, "%", resultado_oxigenio)
+    mostrar_linha("Oxigênio", oxigenio, "%", resultado_oxigenio)
     mostrar_linha("Estabilidade", estabilidade, "%", resultado_estabilidade)
     print()
-    print("Pontuacao de risco do ciclo: " + str(risco_ciclo))
-    print("Classificacao do ciclo: " + classificar_ciclo(risco_ciclo))
-    print("Recomendacao: " + gerar_recomendacao(resultados, risco_ciclo))
+    print("Pontuação de risco do ciclo: " + str(risco_ciclo))
+    print("Classificação do ciclo: " + classificar_ciclo(risco_ciclo))
+    print("Recomendação: " + gerar_recomendacao(resultados, risco_ciclo))
 
 quantidade_ciclos = len(dados_missao)
 risco_total = 0
@@ -209,41 +200,49 @@ area_mais_afetada = identificar_area_mais_afetada(pontuacao_areas, areas_monitor
 
 print()
 print("=" * 60)
-print("RELATORIO FINAL DA MISSAO")
+print("RELATÓRIO FINAL DA MISSÃO")
 print("=" * 60)
-print("Missao: " + nome_missao)
+print("Missão: " + nome_missao)
 print("Equipe: " + nome_equipe)
+
 print()
 print("Quantidade de ciclos analisados: " + str(quantidade_ciclos))
 print()
-print("Media de temperatura: " + format(soma_temperatura / quantidade_ciclos, ".2f") + " C")
-print("Media de comunicacao: " + format(soma_comunicacao / quantidade_ciclos, ".2f") + "%")
-print("Media de bateria: " + format(soma_bateria / quantidade_ciclos, ".2f") + "%")
-print("Media de oxigenio: " + format(soma_oxigenio / quantidade_ciclos, ".2f") + "%")
-print("Media de estabilidade: " + format(soma_estabilidade / quantidade_ciclos, ".2f") + "%")
+
+print("Média de temperatura: " + format(soma_temperatura / quantidade_ciclos, ".2f") + " °C")
+print("Média de comunicação: " + format(soma_comunicacao / quantidade_ciclos, ".2f") + "%")
+print("Média de bateria: " + format(soma_bateria / quantidade_ciclos, ".2f") + "%")
+print("Média de oxigênio: " + format(soma_oxigenio / quantidade_ciclos, ".2f") + "%")
+print("Média de estabilidade: " + format(soma_estabilidade / quantidade_ciclos, ".2f") + "%")
 print()
-print("Ciclo mais critico: Ciclo " + str(ciclo_mais_critico))
-print("Maior pontuacao de risco: " + str(maior_risco))
-print("Risco medio da missao: " + format(risco_medio, ".2f"))
-print("Quantidade de ciclos criticos: " + str(quantidade_ciclos_criticos))
+
+print("Ciclo mais crítico: Ciclo " + str(ciclo_mais_critico))
+print("Maior pontuação de risco: " + str(maior_risco))
+print("Risco médio da missão: " + format(risco_medio, ".2f"))
+print("Quantidade de ciclos críticos: " + str(quantidade_ciclos_criticos))
+
 print()
-print("Tendencia da missao:")
+print("Tendência da missão:")
 print(analisar_tendencia(riscos_ciclos))
 print()
-print("Pontuacao acumulada por area:")
+
+print("Pontuação acumulada por área:")
 for i in range(len(areas_monitoradas)):
     print(areas_monitoradas[i] + ": " + str(pontuacao_areas[i]) + " pontos")
+
 print()
-print("Area mais afetada:")
+print("Área mais afetada:")
 print(area_mais_afetada)
 print()
-print("Classificacao final da missao:")
+
+print("Classificação final da missão:")
 print(classificar_ciclo(risco_medio))
 print()
-print("Conclusao:")
+
+print("Conclusão:")
 if risco_medio <= 2:
-    print("A missao terminou com baixo nivel de risco e pode continuar em operacao normal.")
+    print("A missão terminou com baixo nível de risco e pode continuar em operação normal.")
 elif risco_medio <= 5:
-    print("A missao apresentou instabilidade e deve continuar com monitoramento reforcado.")
+    print("A missão apresentou instabilidade e deve continuar com monitoramento reforçado.")
 else:
-    print("A missao apresentou risco alto e deve entrar em protocolo de emergencia.")
+    print("A missão apresentou risco alto e deve entrar em protocolo de emergência.")
